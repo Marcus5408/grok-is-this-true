@@ -1,21 +1,25 @@
 const TelegramBot = require("node-telegram-bot-api");
 const env = require("../env");
 const { makeAiRequest } = require("../ai");
-
-const bot = new TelegramBot(env.TELEGRAM_TOKEN, { polling: true });
-
-(async () => {
-  bot.onText(/@grok /, async (msg) => {
+const { QuickDB} = require('quick.db')
+const bot = new TelegramBot(env.TELEGRAM_TOKEN, { polling: false });
+const db = new QuickDB({ table: "telegram"});
+;(async () => {
+  bot.onText(/@grok/, async (msg) => {
     const chatId = msg.chat.id;
     const content = msg.text;
     // bot.sendMessage(chatId, 'meow');
     const message = await bot.sendMessage(chatId, "Thinking...");
-    const aiResponse = await makeAiRequest([
+    const messages=[
+      ...(await db.get(`${chatId}`)) || [],
       {
         role: "user",
         content: content,
       },
-    ]);
+    ]
+    const aiResponse = await makeAiRequest(messages);
+    messages.push(aiResponse)
+    await db.set(`${chatId}`, messages)
     bot
       .editMessageText(aiResponse.content, {
         chat_id: chatId,
