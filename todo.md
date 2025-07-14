@@ -1,2 +1,2 @@
-- [ ] make it use prev thraed data 
+- [ ] make it use prev thraed data
 - [ ] add a delete all my data cmd and a nuke bot db cmd
