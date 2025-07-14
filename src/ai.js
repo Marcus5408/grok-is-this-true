@@ -1,4 +1,4 @@
-const { readFileSync } = require('fs')
+const { readFileSync } = require("fs");
 /**
  * @typedef {Object} Message
  * @property {string} content
@@ -45,10 +45,13 @@ function makeAiRequest(messages) {
       },
       // body: '{\n        "messages": [{"role": "user", "content": "Tell me a joke!"}]\n    }',
       body: JSON.stringify({
-        messages: [{
-          role: "system",
-          content: readFileSync(__dirname +'/prompt.txt').toString()
-        },...messages],
+        messages: [
+          {
+            role: "system",
+            content: readFileSync(__dirname + "/prompt.txt").toString(),
+          },
+          ...messages,
+        ],
       }),
     })
       .then((r) => r.text())
