@@ -6,10 +6,10 @@ This is a simple AI bot that works on **Slack** and **Telegram** - kind of like 
 
 ## 🚀 Features
 
-* Supports **Slack** and **Telegram**
-* Built with **pnpm** for fast, efficient installs
-* Easily extendable with custom commands or message handling
-* Powered by OpenAI (or your model of choice)
+- Supports **Slack** and **Telegram**
+- Built with **pnpm** for fast, efficient installs
+- Easily extendable with custom commands or message handling
+- Powered by OpenAI (or your model of choice)
 
 ## 🛠️ Getting Started
 
@@ -32,6 +32,6 @@ SLACK_APP_TOKEN=xapp
 
 ## 📦 Dependencies
 
-* `pnpm` for package management
-* `@slack/bolt` for Slack bot support
-* `node-telegram-bot-api` for Telegram
+- `pnpm` for package management
+- `@slack/bolt` for Slack bot support
+- `node-telegram-bot-api` for Telegram
